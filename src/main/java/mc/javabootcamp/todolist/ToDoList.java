@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+
 @Entity
 
 public class ToDoList {
@@ -15,8 +16,8 @@ public class ToDoList {
     private String description;
     private String priority;
     private Date duedate;
+    private boolean iscompleted;
     private String picture;
-    private boolean isCompleted;
 
     public long getId() {
         return id;
@@ -66,11 +67,11 @@ public class ToDoList {
         this.picture = picture;
     }
 
-    public boolean isCompleted() {
-        return isCompleted;
+    public boolean isIscompleted() {
+        return iscompleted;
     }
 
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
+    public void setIscompleted(boolean iscompleted) {
+        this.iscompleted = iscompleted;
     }
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>To do list application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       <link rel="stylesheet" href="../cssStyle.css">
+</head>
+<body>
+<div th:replace="layout::navlinks"></div>
+<!--<a class="btn btn-primary btn-lg" role="button" href="/form">Add to do list</a><br/>-->
+<h4>List of todo items </h4>
+<div class="row">
+</div>
+<!--<div class="row">
+    <div th:each="i: ${alltodolist}">
+        <div class="card">
+            <div th:if="${i.picture} !=null">
+                <img class="card-img-top" th:src="${i.picture}" alt="to do list pic"/>
+            </div>
+            <div class="card-body">
+                <h5 th:text="${i.name}"></h5>
+            </div>
+            <div class="card-title">
+                <h5 th:text="${i.description}"></h5>
+                <h5 th:text="${i.priority}"></h5>
+                <h5 th:text="${i.duedate}"></h5>
+                <h5 th:text="${i.iscompleted}"></h5>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!--
+this is testing -->
+
+<div class="container">
+    <div th:each="i: ${alltodolist}">
+        <div class="card align-items-center" style="width: 20rem;">
+            <div th:if="${i.picture} !=null">
+                <img class="card-img-top" th:src="${i.picture}" alt="to do list pic"/>
+            </div>
+            <div class="card-block text-center">
+                 <h5 class="card-title" th:text="${i.name}"></h5>
+                <p class="card-text"  th:text="${i.description}"></p>
+            </div>
+            <ul class="list-group list-group-flush w-100 align-items-stretch">
+                <li class="list-group-item text-center d-inline-block" th:text="${i.priority}"></li>
+                <li class="list-group-item text-center d-inline-block" th:text="${i.duedate}"></li>
+                <div th:if="${i.iscompleted} != true"">
+                <li class="list-group-item text-center d-inline-block" th:text="${i.iscompleted}"></li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div th:replace="layout::footer"></div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

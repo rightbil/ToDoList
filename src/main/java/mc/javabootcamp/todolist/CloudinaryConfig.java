@@ -31,7 +31,7 @@ public class CloudinaryConfig {
             return null;
         }
     }
-    public String createURL(String name, int width,
+    public String createUrl(String name, int width,
                             int height, String action){
         return cloudinary.url()
                 .transformation(new Transformation()

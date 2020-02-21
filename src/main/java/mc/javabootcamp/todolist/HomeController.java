@@ -18,29 +18,28 @@ public class HomeController {
     @Autowired
     ToDoListRepository toDoListRepository;
     @Autowired
-    CloudinaryConfig cloudinaryConfig;
+    CloudinaryConfig cloudc;
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("todolists", toDoListRepository.findAll());
-        return "index";
-    }
-
-    @PostMapping("/list")
-    public String listForm(Model model) {
-        model.addAttribute("todolist", new ToDoList());
+        model.addAttribute("alltodolist", toDoListRepository.findAll());
         return "list";
     }
 
+    @GetMapping("/form")
+    public String listForm(Model model) {
+        model.addAttribute("todo", new ToDoList());
+        return "form";
+    }
 
-    @PostMapping("/list")
+    @PostMapping("/form")
     public String processImage(@ModelAttribute ToDoList todolist,
                                @RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
             return "redirect:/list";
         }
         try {
-            Map uploadResult = cloudinaryConfig.upload(file.getBytes(),
+            Map uploadResult = cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
             todolist.setPicture(uploadResult.get("url").toString());
             toDoListRepository.save(todolist);
